@@ -13,7 +13,7 @@
 
         async function start() {
             if (location.hash) {
-                const input = location.hash.slice(1).split(',');
+                const input = location.hash.slice(1).split('&');
                 const password = prompt('Enter the password', '');
                 if (password === null) return false;
 
@@ -57,7 +57,7 @@
                 const salt = iv; // salt and iv can be the same for this purpose
                 const key = await getKey(password1, salt);
                 const cipher = await encrypt(url, key, iv);
-                prompt('Copy this link', host + location.pathname + '#' + pack(cipher) + ',' + pack(iv));
+                prompt('Copy this link', host + location.pathname + '#' + pack(cipher) + '&' + pack(iv));
             }
         }
 
@@ -135,7 +135,7 @@
         const pack = (buffer) => {
             return btoa(
                 String.fromCharCode.apply(null, new Uint8Array(buffer))
-            );
+            ).replace('=', '');
         };
 
         // https://developers.google.com/web/updates/2012/06/How-to-convert-ArrayBuffer-to-and-from-String
