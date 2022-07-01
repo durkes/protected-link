@@ -135,7 +135,7 @@
         const pack = (buffer) => {
             return btoa(
                 String.fromCharCode.apply(null, new Uint8Array(buffer))
-            ).replace('=', '');
+            ).replaceAll('=', '');
         };
 
         // https://developers.google.com/web/updates/2012/06/How-to-convert-ArrayBuffer-to-and-from-String
