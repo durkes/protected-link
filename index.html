@@ -34,7 +34,7 @@
                 // redirect if no errors
                 location.href = url;
             } else {
-                const url = prompt('Enter the URL to protect', '');
+                const url = prompt('Enter the URL to encrypt', '');
                 if (url === null) return false;
                 if (!url.startsWith('http')) {
                     alert('Valid URLs should begin with "https://"');
